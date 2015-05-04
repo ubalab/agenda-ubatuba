@@ -7,19 +7,37 @@ feitos com Drupal, levando em conta as práticas atuais de desenvolvimento distr
 Nesse primeiro momento, vou documentar o processo de configuração do sistema básico para
 ambiente Debian e/ou derivados.
 
-1. Instalar LAMP
+### Instalar LAMP
 ~~~~
 sudo tasksel install lamp-server
 ~~~~
 
-2. Habilitar mod_rewrite no Apache2
+### Habilitar mod_rewrite no Apache2
 ~~~~
 sudo a2enmod rewrite
 sudo service apache2 restart
 ~~~~
 
-3. Instalar a extensão GD para PHP
+### Instalar a extensão GD para PHP
 ~~~~
 sudo apt-get install php5-gd
+~~~~
+
+## Drupal
+
+### Instalação do drush
+
+Não vamos cobrir aqui a instalação do drush. Recomendo o uso da documentação oficial dele:
+
+https://github.com/drush-ops/drush
+
+### Core do Drupal
+
+Com o drush instalado, vamos primeiro baixar o drupal. Para facilitar, vamos instalá-lo numa pasta "agenda" dentro de /var/www:
+
+~~~~
+
+sudo drush dl -y --destination=/var/www --drupal-project-rename=agenda;
+
 ~~~~
 
