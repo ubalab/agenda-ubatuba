@@ -61,6 +61,16 @@ cd /var/www/agenda
 sudo drush site-install -y standard --account-mail=seuemail@email.ema --account-name=agenda --account-pass=umasenhaqualquer --site-name="Agenda Ubatuba" --site-mail=noreply@agenda.ubatuba.cc --locale=pt-br --db-url=mysql://usuariomysql:senhamysql@localhost/nomedabase
 ~~~~
 
+#### Clean URLs
+
+Para garantir que as URLs limpas funcionem, você vai precisar adicionar as linhas abaixo ao arquivo de configuração do Apache (geralmente localizado em /etc/apache2/sites-enabled/000-default.conf ou algo parecido).
+
+<Directory /var/www/agenda/>
+  Options FollowSymLinks
+  AllowOverride All
+  Require all granted
+</Directory>
+
 ### Módulos adicionais comuns
 
 Agora o sistema básico já está instalado. Mas antes de começar a customizar o site, vamos organizar a casa:
@@ -74,4 +84,3 @@ sudo drush -y dl ctools views token metatag smtp libraries xmlsitemap pathauto a
 sudo drush -y en ctools views token metatag smtp libraries xmlsitemap pathauto admin mollom google_analytics backup_migrate
 sudo drush vset -y user_register 0
 ~~~~
-
