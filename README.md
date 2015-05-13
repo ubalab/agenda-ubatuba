@@ -47,6 +47,18 @@ sudo drush dl -y --destination=/var/www --drupal-project-rename=agenda;
 
 ~~~~
 
+#### Clean URLs
+
+Para garantir que as URLs limpas funcionem, você vai precisar adicionar as linhas abaixo ao arquivo de configuração do Apache (geralmente localizado em /etc/apache2/sites-enabled/000-default.conf ou algo parecido).
+
+~~~~
+<Directory /var/www/agenda/>
+  Options FollowSymLinks
+  AllowOverride All
+  Require all granted
+</Directory>
+~~~~
+
 ### Instalando o site
 
 Vamos agora configurar um site. Antes de dar o comando, modifique os seguintes parâmetros para adequar-se a seus dados:
@@ -60,16 +72,6 @@ Vamos agora configurar um site. Antes de dar o comando, modifique os seguintes p
 cd /var/www/agenda
 sudo drush site-install -y standard --account-mail=seuemail@email.ema --account-name=agenda --account-pass=umasenhaqualquer --site-name="Agenda Ubatuba" --site-mail=noreply@agenda.ubatuba.cc --locale=pt-br --db-url=mysql://usuariomysql:senhamysql@localhost/nomedabase
 ~~~~
-
-#### Clean URLs
-
-Para garantir que as URLs limpas funcionem, você vai precisar adicionar as linhas abaixo ao arquivo de configuração do Apache (geralmente localizado em /etc/apache2/sites-enabled/000-default.conf ou algo parecido).
-
-<Directory /var/www/agenda/>
-  Options FollowSymLinks
-  AllowOverride All
-  Require all granted
-</Directory>
 
 ### Módulos adicionais comuns
 
